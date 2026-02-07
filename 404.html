@@ -83,13 +83,13 @@
 
     <script>
         (function() {
-            var images = ['45.jpg', '19.gif', "25.jpg"];
+            var images = ['2.jpg', '1.gif', "3.jpg", "4.gif", "5.jpg", "6.png"];
             var randomIndex = Math.floor(Math.random() * images.length);
             var selectedImage = images[randomIndex];
             
             var imgElement = document.createElement('img');
             imgElement.src = selectedImage;
-            imgElement.alt = '404 Lovetosleep';
+            imgElement.alt = '404 lovetosleep';
             imgElement.className = 'random-image';
             
             document.getElementById('image-container').appendChild(imgElement);
