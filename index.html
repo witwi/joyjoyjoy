@@ -1,262 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lovetosleep.ру</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            overflow: hidden; 
-        }
-
-        body {
-            font-family: Verdana, sans-serif;
-            font-size: 11px;
-            color: #000;
-        }
-
-        a {
-            color: #330;
-            text-decoration: none;
-            border-bottom: 1px dotted #330;
-            cursor: pointer;
-        }
-        
-        a:hover {
-            color: #699;
-            border-bottom-color: #699;
-        }
-
-        .i-form_text_input {
-            font-family: Verdana, sans-serif;
-            border: 1px solid #e9e9e9;
-            border-top-color: #cccccc;
-            padding: 5px;
-            background-color: #f6efd2; 
-            font-size: 13px;
-            width: 300px;
-            margin-bottom: 10px;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        .i-form_text_input:focus {
-            box-shadow: inset 0 0 0 1px #999;
-        }
-
-        .b-button_gradient {
-            font-family: Georgia, serif;
-            font-size: 18px;
-            color: #555;
-            cursor: pointer;
-            border: 1px solid #d1ba8a;
-            border-radius: 4px;
-            padding: 5px 20px;
-            background: linear-gradient(to bottom, #DDB04C 1px, #C3A054 2px, #D4BF93 100%);
-            outline: none;
-            box-shadow: 0 1px 2px #ccc;
-        }
-
-        .b-button_gradient:active {
-            position: relative;
-            top: 1px;
-            box-shadow: none;
-        }
-
-        .hidden { display: none !important; }
-
-        #login-wrapper {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-            z-index: 100;
-        }
-
-        .login-box { text-align: center; }
-        
-        .logo-text {
-            font-family: Georgia, serif; 
-            font-size: 30px; 
-            font-style: italic; 
-            color: #000;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .login-label {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 13px;
-            color: #556E8C;
-        }
-
-        #main-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;     
-            height: 100%;
-            width: 100%;
-            text-align: center;
-        }
-
-        #main-content {
-            max-width: 900px;
-            padding: 20px;
-        }
-
-        h1.greeting {
-            font-weight: normal;
-            font-size: 24px;
-            color: #999; 
-            margin: 0 0 15px 0;
-            line-height: 1.4;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .subtext {
-            font-size: 10px;
-            color: #000;
-            margin-bottom: 35px;
-        }
-
-        .uptime-block {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #888;
-            border-top: 1px dotted #ccc;
-            padding-top: 10px;
-            display: inline-block; 
-        }
-
-        .uptime-values {
-            color: #CC3333; 
-            font-style: italic;
-        }
-
-        .nano {
-            font-size: 9px;
-            opacity: 0.7;
-        }
-
-        #settings-trigger {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 22px;
-            height: 22px;
-            background: #f7f7f7;
-            color: #ccc;
-            text-align: center;
-            line-height: 22px;
-            font-size: 11px;
-            cursor: pointer;
-            z-index: 50;
-            border-bottom: 1px solid #e9e9e9;
-            border-left: 1px solid #e9e9e9;
-            user-select: none;
-        }
-
-        #settings-trigger:hover {
-            color: #699;
-            background: #fff;
-        }
-
-        #settings-panel {
-            position: fixed;
-            top: -200px;
-            right: 0;
-            width: 250px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-top: none;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: top 0.3s ease;
-            z-index: 49;
-            font-size: 11px;
-            text-align: left;
-        }
-
-        #settings-panel.open { top: 0; }
-
-        .settings-close {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            border: none;
-            color: #ccc;
-            font-size: 14px;
-        }
-        .settings-close:hover { color: #000; }
-
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: help;
-        color: #ccc;
-        font-size: 10px;
-        margin-left: 3px;
-        border-bottom: 1px dotted #ccc;
-    }
-
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 160px;
-        background-color: rgba(51, 51, 51, 0.9); 
-        color: #fff;
-        text-align: center;
-        border-radius: 4px;
-        padding: 8px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%; 
-        left: 50%;
-        margin-left: -80px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-family: Verdana, sans-serif;
-        font-size: 11px;
-        line-height: 1.3;
-        pointer-events: none; 
-    }
-
-
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-
-    @media (pointer: coarse) {
-        .tooltip:active .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-    }
-	
-
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
 
     <div id="login-wrapper" class="hidden">
         <div class="login-box">
             <span class="logo-text">lovetosleep</span>
-		<label class="login-label" for="username-input">
-			Представьтесь, пожалуйста: 
-			<span class="tooltip">
-				[?]
-			<span class="tooltiptext">Это используется для обращений по сайту. Вы можете выбрать любое имя.</span>
-			</span>
-				</label>
+            <label class="login-label" for="username-input">
+                Представьтесь, пожалуйста:
+                <span class="tooltip">
+                    [?]
+                    <span class="tooltiptext">Это используется для обращений по сайту. Вы можете выбрать любое
+                        имя.</span>
+                </span>
+            </label>
             <form id="auth-form" onsubmit="return false;">
                 <input type="text" id="username-input" class="i-form_text_input" placeholder="Имя" autocomplete="off">
                 <br>
@@ -268,11 +32,11 @@
     <div id="main-wrapper" class="hidden">
         <div id="main-content">
             <h1 class="greeting" id="greeting-display"></h1>
-            
-			<div class="subtext">
-			Переходите по ссылкам ниже, <span id="subtext-username"></span>. Это весело и полезно.<br><br>
-				<a href="info.html">инфо</a> | <a href="media.html">медиа</a> | <a href="#" id="logout-link">выход</a>
-			</div>
+
+            <div class="subtext">
+                Переходите по ссылкам ниже, <span id="subtext-username"></span>. Это весело и полезно.<br><br>
+                <a href="info.html">инфо</a> | <a href="media.html">медиа</a> | <a href="#" id="logout-link">выход</a>
+            </div>
 
 
             <div class="uptime-block">
@@ -287,7 +51,8 @@
         <a href="#" class="settings-close" id="settings-close-btn">×</a>
         <div style="margin-bottom: 10px; font-weight: bold; color: #556e8c;">Смена личности</div>
         <form id="change-nick-form">
-            <input type="text" id="new-nick-input" class="i-form_text_input" style="width: 100%; font-size: 11px;" placeholder="Новое имя">
+            <input type="text" id="new-nick-input" class="i-form_text_input" style="width: 100%; font-size: 11px;"
+                placeholder="Новое имя">
             <div style="text-align: right; margin-top: 5px;">
                 <button type="submit" class="b-button_gradient" style="font-size: 12px; padding: 2px 10px;">OK</button>
             </div>
@@ -295,227 +60,10 @@
     </div>
 
 
-<script>
-    const STORAGE_KEY = 'lovetosleep_username';
-    const siteLaunchDate = new Date('2026-01-25T14:40:00');
-
-const rawGreetings = [
-        "15M 7 on 1 Comp StOmP No AiR NO ZeRG RUSH!!1!\" - %username% 1597.",
-        "An nescis, mi fili, quantilla sapientia mundus regatur?",
-        "Who in the world has Chinese food for breakfast? The Chinese?",
-        "%username%, %username%…",
-        "*** STOP (0x0000000A, 0x0000000A, 0x0000000A, 0x0000000A) IRQ_NOT_LESS_OR_EQUAL, %username%.",
-        "Artichokes play football. Purple monkeys dance invisibly.",
-        "Bite my shiny metal ass, %username%.",
-        "Cпасибо, что зашли, %username%.",
-        "Don’t panic, %username%!",
-        "F5, %username%.",
-        "If you got cojones, come on, mette mano.",
-        "Jah’d never let us down, %username%.",
-        "Russian sounds sexy, %username%!",
-        "Solutions are not the answer, %username%.",
-        "Soviet Russia owns teh Intarnet, %username%.",
-        "Tetris is so unrealistic, %username%",
-        "They killed %username%. Bastards!",
-        "You found piles and piles of gold! Keep Clicking! Click like the wind!",
-        "You have completed more work units than 89,795% of our users, %username%.",
-        "fapfapfapfapfapfap, %username%!",
-        "hakkabah hakkabah we hate the usa hakkabah marrakesh hakkabah, %username%.",
-        "А мы построим свой Лунапарк, %username%! С блэкджеком и шлюхами!",
-        "А ты знаешь, в чем соль, %username%?",
-        "А ты пробовал лизать октаэдр, %username%?",
-        "А что ты можешь противопоставить бездушной американской машине, %username%?",
-        "Аллах прекрасен и любит всё прекрасное, %username%.",
-        "Анекдоты о блондинках высмеивают арийский тип, %username%!",
-        "Береги колени, %username%",
-        "Благословен ты в городе, и благословен на поле, %username%.",
-        "В наборе детских кубиков буквы «Х», «У» и «Й» всегда находятся на одном кубике, %username%",
-        "В среду выборы, %username%",
-        "Ваш горизонт завален, %username%.",
-        "Вообще-то я не религиозный человек, но если ты есть там наверху, спаси меня, %username%.",
-        "Вред от курения вообще не доказан, это просто байка, %username%.",
-        "Все что вы здесь видете, далжно оставатся сикретам, %username%.",
-        "Вы ввели неправильное имя или пароль, %username%, попробуйте еще раз.",
-        "Вы не дождетесь новых приветствий, %username%.",
-        "Вы не ошиблись дверью, %username%?",
-        "Вы тоже имеете право на личную жизнь, %username%.",
-        "Высокохохолковый пингвин, %username%, это единственный пингвин в мире, который может шевелить своим хохолком.",
-        "Где мой йогурт, %username%?",
-        "Геббельс был ученым, поэтом и музыкантом, %username%.",
-        "Глаз страуса больше, чем его мозг, %username%.",
-        "Если руки золотые, то не важно откуда они растут, %username%.",
-        "Затоптать муравья не так просто, как кажется, %username%.",
-        "Здравствуйте, %username%.",
-        "Из человека получается семь кусков мыла, %username%!",
-        "Индейка - единственный зверь хитрее человека, %username%.",
-        "Кто спит - тот видит только сны, %username%.",
-        "Куда вы дели мой ваучер, %username%?",
-        "Купите икону «Неупиваемая чаша» и молитесь, %username%!",
-        "lovetosleep - простреленное колено Израилево, %username%.",
-        "Мы верим в ваc, %username%. Нет, правда.",
-        "Мы надеемся, что вы любите Новое Правительство, %username%.",
-        "Надеюсь, приятно проводите время, %username%.",
-        "Надо делать то, что нужно людям, а не то, чем мы занимаемся, %username%.",
-        "Не верьте тому, что пишут перед вашим псевдонимом, %username%.",
-        "Нет, %username%, учёные не такие дураки!",
-        "Носороги не играют в игры, %username%.",
-        "Ну и отлично, %username%!",
-        "Он выпустил на свободу Разум биологов, %username%!",
-        "Патрис Лумумба родился 2 июля, %username%!",
-        "Дима жив, %username%",
-        "Передайте женщине соль, %username%.",
-        "Подростки - не целевая аудитория табачных компаний, %username%.",
-        "Попытка - первый шаг к провалу, %username%.",
-        "По тебе плачет эстрада, %username%.",
-        "Прислушивайтесь к голосам в вашей голове, %username%.",
-        "Продолжайте кликать %username%! Во имя всего святого, продолжайте кликать!",
-        "Реквизит должен быть съеден, %username%",
-        "Самоубийцы дискредитировали самоубийство, %username%.",
-        "Сегодня вас ждёт приятная неожиданность, %username%!",
-        "Слово «ЙА» - можно написать одной буквой, %username%.",
-        "Тут никого нет, %username%! Никого! Никого, кроме тебя!",
-        "У нас тут все либо умные, либо красивые, а вы хоть разорвитесь, %username%.",
-        "Хочешь новых прикольных рингтонов? Выпрыгни в окно, %username%!",
-        "Я слежу за тобой, %username%. И ты мне нравишься. (NOT GAY)",
-        "%username% ненавидит детский сад",
-		"%username%, вы самое слабое звено! Прощайте."
-    ];
-
-    const loginWrapper = document.getElementById('login-wrapper');
-    const mainWrapper = document.getElementById('main-wrapper');
-    const greetingDisplay = document.getElementById('greeting-display');
-    const usernameInput = document.getElementById('username-input');
-    const loginBtn = document.getElementById('login-btn');
-    const authForm = document.getElementById('auth-form');
-    const uptimeCounter = document.getElementById('uptime-counter');
-    const logoutLink = document.getElementById('logout-link');
-
-    const settingsTrigger = document.getElementById('settings-trigger');
-    const settingsPanel = document.getElementById('settings-panel');
-    const settingsCloseBtn = document.getElementById('settings-close-btn');
-    const changeNickForm = document.getElementById('change-nick-form');
-    const newNickInput = document.getElementById('new-nick-input');
-    
-    const subtextUsername = document.getElementById('subtext-username');
-
-    function init() {
-        const storedName = localStorage.getItem(STORAGE_KEY);
-        if (storedName) {
-            showMain(storedName);
-        } else {
-            showLogin();
-        }
-        setInterval(updateUptime, 47);
-    }
-
-    function showLogin() {
-        loginWrapper.classList.remove('hidden');
-        mainWrapper.classList.add('hidden');
-        setTimeout(() => usernameInput.focus(), 100);
-    }
-
-    function showMain(name) {
-        loginWrapper.classList.add('hidden');
-        mainWrapper.classList.remove('hidden');
-        
-        let greetingTemplate = rawGreetings[Math.floor(Math.random() * rawGreetings.length)];
-        let finalGreeting = greetingTemplate.replace(/%username%/g, name).replace(/\$username/g, name);
-        greetingDisplay.textContent = finalGreeting;
-
-        subtextUsername.textContent = name;
-    }
-
-    function handleLogin() {
-        const name = usernameInput.value.trim();
-        if (name) {
-            localStorage.setItem(STORAGE_KEY, name);
-            showMain(name);
-        } else {
-            alert('Представьтесь, это важно.');
-        }
-    }
-
-// ненужная параша нахуй с корабля    loginBtn.addEventListener('click', handleLogin);
-    authForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        handleLogin();
-    });
-
-    logoutLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(confirm('Вы действительно хотите покинуть lovetosleep?')) {
-            localStorage.removeItem(STORAGE_KEY);
-            location.reload();
-        }
-    });
-
-    function updateUptime() {
-        const now = new Date();
-        let diff = now - siteLaunchDate;
-
-        const msec = diff % 1000;
-        const totalSeconds = Math.floor(diff / 1000);
-        const seconds = totalSeconds % 60;
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        const minutes = totalMinutes % 60;
-        const totalHours = Math.floor(totalMinutes / 60);
-        const hours = totalHours % 24;
-        const totalDays = Math.floor(totalHours / 24);
-        
-        const years = Math.floor(totalDays / 365);
-        const remainingDaysAfterYears = totalDays % 365;
-        const months = Math.floor(remainingDaysAfterYears / 30);
-        const weeks = Math.floor((remainingDaysAfterYears % 30) / 7);
-        const days = (remainingDaysAfterYears % 30) % 7;
-
-        const nano = Math.floor(Math.random() * 999);
-
-        function declOfNum(number, titles) {  
-            const cases = [2, 0, 1, 1, 1, 2];  
-            return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
-        }
-
-        const strYears = `${years} ${declOfNum(years, ['год', 'года', 'лет'])}`;
-        const strMonths = `${months} ${declOfNum(months, ['месяц', 'месяца', 'месяцев'])}`;
-        const strWeeks = `${weeks} ${declOfNum(weeks, ['неделя', 'недели', 'недель'])}`;
-        const strDays = `${days} ${declOfNum(days, ['день', 'дня', 'дней'])}`;
-        const strHours = `${hours} ${declOfNum(hours, ['час', 'часа', 'часов'])}`;
-        const strMin = `${minutes} ${declOfNum(minutes, ['минута', 'минуты', 'минут'])}`;
-        const strSec = `${seconds} ${declOfNum(seconds, ['секунда', 'секунды', 'секунд'])}`;
-        const strMs = `${msec} мс`;
-        const strNano = `<span class="nano">${nano} нс</span>`;
-
-        uptimeCounter.innerHTML = `${strYears}, ${strMonths}, ${strWeeks}, ${strDays}, ${strHours}, ${strMin}, ${strSec}, ${strMs}, ${strNano}`;
-    }
-
-    settingsTrigger.addEventListener('mouseenter', () => settingsTrigger.style.background = '#fff');
-    settingsTrigger.addEventListener('mouseleave', () => settingsTrigger.style.background = '#f7f7f7');
-    
-    settingsTrigger.addEventListener('click', () => {
-        settingsPanel.classList.toggle('open');
-    });
-
-    settingsCloseBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        settingsPanel.classList.remove('open');
-    });
-
-    changeNickForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const newNick = newNickInput.value.trim();
-        if(newNick) {
-            localStorage.setItem(STORAGE_KEY, newNick);
-            showMain(newNick); 
-            newNickInput.value = '';
-            settingsPanel.classList.remove('open');
-        }
-    });
-
-    init();
-	
-</script>
+    <script src="js/index.js" defer></script>
 
 
 
 </body>
+
 </html>
